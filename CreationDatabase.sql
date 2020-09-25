@@ -1,0 +1,57 @@
+IF OBJECT_ID('Brive') IS NOT NULL 
+	DROP DATABASE Brive
+
+CREATE DATABASE Brive
+GO
+
+CREATE TABLE SucursalA(
+	Id INT IDENTITY(1,1),
+	ProductName VARCHAR(100) NOT NULL,
+	Code CHAR(6) NOT NULL,
+	Quantity INT NOT NULL,
+	UnitPrice DECIMAL(6,2) NOT NULL,
+	PRIMARY KEY(Id)
+)
+GO
+
+ALTER TABLE SucursalA 
+ADD CONSTRAINT DF_SucursalA_Quantity
+DEFAULT 0 
+FOR Quantity
+
+ALTER TABLE SucursalA 
+ADD CONSTRAINT DF_SucursalA_UnitPrice
+DEFAULT 0 
+FOR UnitPrice
+
+
+CREATE TABLE SucursalB(
+	Id INT IDENTITY(1,1),
+	ProductName VARCHAR(100) NOT NULL,
+	Code CHAR(6) NOT NULL,
+	Quantity INT NOT NULL,
+	UnitPrice DECIMAL(6,2) NOT NULL,
+	PRIMARY KEY(Id)
+)
+GO
+
+ALTER TABLE SucursalB 
+ADD CONSTRAINT DF_SucursalB_Quantity
+DEFAULT 0 
+FOR Quantity
+
+
+ALTER TABLE SucursalB 
+ADD CONSTRAINT DF_SucursalB_UnitPrice
+DEFAULT 0 
+FOR UnitPrice
+
+
+CREATE TABLE Product(
+	Id INT IDENTITY(1,1),
+	Code CHAR(6) NOT NULL,
+	UnitPrice DECIMAL(6,2) NOT NULL
+	PRIMARY KEY(Id)
+)
+
+
